@@ -1,0 +1,40 @@
+{
+    "name": "ecv-node-api",
+    "version": "1.0.0",
+    "description": "Cours de NodeJS API",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "dev": "npx nodemon index.js",
+        "test": "jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/BCollignonEcv/ECV-node-api.git"
+    },
+    "keywords": [
+        "NODEJS",
+        "API",
+        "SCRAPER"
+    ],
+    "author": "BCollignonEcv",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/BCollignonEcv/ECV-node-api/issues"
+    },
+    "homepage": "https://github.com/BCollignonEcv/ECV-node-api#readme",
+    "dependencies": {
+        "axios": "^0.26.1",
+        "bcrypt": "^5.0.1",
+        "body-parser": "^1.20.0",
+        "cors": "^2.8.5",
+        "dotenv": "^16.0.0",
+        "express": "^4.17.3",
+        "sequelize": "^6.18.0",
+        "uuid": "^8.3.2"
+    },
+    "devDependencies": {
+        "sqlite3": "^5.0.2",
+        "sequelize-cli": "^6.4.1"
+    }
+}
