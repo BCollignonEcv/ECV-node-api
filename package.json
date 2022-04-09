@@ -4,6 +4,8 @@
     "description": "Cours de NodeJS API",
     "main": "index.js",
     "scripts": {
+        "setup.dev": "sh setup.dev.sh",
+        "setup.prod": "sh setup.prod.sh",
         "start": "node index.js",
         "dev": "npx nodemon index.js",
         "test": "jest"
