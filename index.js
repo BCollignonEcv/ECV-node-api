@@ -3,6 +3,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors')
 
+const sourceRoutes = require('./routes/source.routes');
+const roleRoutes = require('./routes/role.routes');
+const userRoutes = require('./routes/user.routes');
+const jobRoutes = require('./routes/job.routes');
+
 const app = express();
 
 const PORT = process.env.PORT || 8080;
@@ -14,6 +19,14 @@ app.use(cors())
 app.get('/', (req, res) => {
     res.send("Welcome on API")
 })
+
+// Routes Admin
+app.use('/admin/sources', sourceRoutes);
+app.use('/admin/users', userRoutes);
+app.use('/admin/roles', roleRoutes);
+
+// Routes Api
+app.use('/api/jobs', jobRoutes);
 
 app.get('*', function(req, res) {
     res.status(404).json({
