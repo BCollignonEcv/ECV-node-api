@@ -32,7 +32,6 @@ module.exports = {
       },
       role: {
           type: Sequelize.UUID,
-          allowNull: false,
       },
       createdAt: {
         allowNull: false,
