@@ -3,13 +3,12 @@ var router = express.Router();
 
 const controller = require('../controllers/source.controller');
 const auth = require('../middlewares/authentification/auth.middleware');
-
-
+const validator = require('../middlewares/validators/source.validator')
 
 router.get('/',  controller.getSources)
 router.get('/:id', controller.getSource)
-router.post('/', auth.authenticate, controller.createSource)
-router.patch('/:id', auth.authenticate, controller.updateSource)
+router.post('/', auth.authenticate, validator.validateSourceRegistration, controller.createSource)
+router.patch('/:id', auth.authenticate, validator.validateSourceEdition, controller.updateSource)
 router.delete('/:id', auth.authenticate, controller.deleteSource)
 
 module.exports = router;

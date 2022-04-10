@@ -5,12 +5,12 @@ const controller = require('../controllers/user.controller');
 const validator = require('../middlewares/validators/user.validator')
 const auth = require('../middlewares/authentification/auth.middleware');
 
-router.post('/login', controller.loginUser)
+router.post('/login', validator.validateUserLogin, controller.loginUser)
 
 router.get('/', auth.authenticate, controller.getUsers)
 router.get('/:id', auth.authenticate, controller.getUser)
 router.post('/', auth.authenticate, validator.validateUserRegistration, controller.createUser)
-router.patch('/:id', auth.authenticate, controller.updateUser)
+router.patch('/:id', auth.authenticate, validator.validateUserEdition, controller.updateUser)
 router.delete('/:id', auth.authenticate, controller.deleteUser)
 
 module.exports = router;
