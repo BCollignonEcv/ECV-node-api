@@ -5,39 +5,68 @@ components:
       properties:
         id:
           type: string
+          format: uuidv4
+        firsname:
+          type: string
+        lastname:
+          type: string
         email:
           type: string
           format: email
+        username:
+          type: string
+        password:
+          type: string
+          format: password
+      example:
+        id: 123e4567-e89b-12d3-a456-426614174000
+        firstname: example
+        lastname: example
+        email: example@example.com
+        username: example
+        password: Password123
+
+    Source:
+      type: object
+      properties:
+        enable:
+          type: boolean
         name:
           type: string
-        role:
+        baseUrl:
           type: string
-          enum: [user, admin]
-      example:
-        id: 5ebac534954b54139806c112
-        email: fake@example.com
-        name: fake name
-        role: user
+        location:
+          type: string
+        search:
+          type: string
+        jobOfferTag:
+          type: string
+        titleTag:
+          type: string
+        companyTag:
+          type: string
+        urlTag:
+          type: string
+        salaryTag:
+          type: string
 
-    Token:
+    Role:
       type: object
       properties:
-        token:
+        name:
           type: string
-        expires:
+        description:
           type: string
-          format: date-time
-      example:
-        token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZWJhYzUzNDk1NGI1NDEzOTgwNmMxMTIiLCJpYXQiOjE1ODkyOTg0ODQsImV4cCI6MTU4OTMwMDI4NH0.m1U63blB0MLej_WfB7yC2FTMnCziif9X8yzwDEfJXAg
-        expires: 2020-05-12T16:18:04.793Z
-
-    AuthTokens:
-      type: object
-      properties:
-        access:
-          $ref: '#/components/schemas/Token'
-        refresh:
-          $ref: '#/components/schemas/Token'
+        disableSource:
+          type: boolean
+        createSource:
+          type: boolean
+        updateSource:
+          type: boolean
+        deleteSource:
+          type: boolean
+        deleteUser:
+          type: boolean
 
     Error:
       type: object
@@ -48,24 +77,6 @@ components:
           type: string
 
   responses:
-    DuplicateEmail:
-      description: Email already taken
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            code: 400
-            message: Email already taken
-    DuplicateUrl:
-      description: URL already taken
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            code: 400
-            message: URL already taken
     Unauthorized:
       description: Unauthorized
       content:

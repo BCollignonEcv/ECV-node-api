@@ -24,13 +24,10 @@ module.exports = router;
 
 /**
  * @swagger
- * /users:
+ * /admin/users:
  *   post:
  *     summary: Create a user
- *     description: Only admins can create other users.
  *     tags: [Users]
- *     security:
- *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -38,30 +35,32 @@ module.exports = router;
  *           schema:
  *             type: object
  *             required:
- *               - name
+ *               - firstname
+ *               - lasname
  *               - email
+ *               - username
  *               - password
- *               - role
  *             properties:
- *               name:
+ *               firstname:
+ *                 type: string
+ *               lastname:
  *                 type: string
  *               email:
  *                 type: string
  *                 format: email
- *                 description: must be unique
+ *               username:
+ *                 type: string
  *               password:
  *                 type: string
  *                 format: password
  *                 minLength: 8
  *                 description: At least one number and one letter
- *               role:
- *                  type: string
- *                  enum: [user, admin]
  *             example:
- *               name: fake name
- *               email: fake@example.com
+ *               firstname: example
+ *               lastname: example
+ *               email: example@example.com
+ *               username: example
  *               password: password1
- *               role: user
  *     responses:
  *       "201":
  *         description: Created
@@ -144,7 +143,7 @@ module.exports = router;
 
 /**
  * @swagger
- * /users/{id}:
+ * /admin/users/{id}:
  *   get:
  *     summary: Get a user
  *     description: Logged in users can fetch only their own user information. Only admins can fetch other users.
