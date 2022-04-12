@@ -40,6 +40,7 @@ module.exports = router;
  *               - email
  *               - username
  *               - password
+ *               - role
  *             properties:
  *               firstname:
  *                 type: string
@@ -71,16 +72,14 @@ module.exports = router;
  *           application/json:
  *             schema:
  *                $ref: '#/components/schemas/User'
- *       "401":
- *         $ref: '#/components/responses/Unauthorized'
- *       "403":
+ *       "500":
  *         $ref: '#/components/responses/Forbidden'
  *
  *   get:
  *     summary: Get all users
  *     tags: [Users]
  *     responses:
- *       "200":
+ *       "302":
  *         description: OK
  *         content:
  *           application/json:
@@ -91,9 +90,7 @@ module.exports = router;
  *                   type: array
  *                   items:
  *                     $ref: '#/components/schemas/User'
- *       "401":
- *         $ref: '#/components/responses/Unauthorized'
- *       "403":
+ *       "500":
  *         $ref: '#/components/responses/Forbidden'
  */
 
@@ -111,15 +108,13 @@ module.exports = router;
  *           type: uuidv4
  *         description: User id
  *     responses:
- *       "200":
+ *       "302":
  *         description: OK
  *         content:
  *           application/json:
  *             schema:
  *                $ref: '#/components/schemas/User'
- *       "401":
- *         $ref: '#/components/responses/Unauthorized'
- *       "403":
+ *       "500":
  *         $ref: '#/components/responses/Forbidden'
  *       "404":
  *         $ref: '#/components/responses/NotFound'
@@ -165,15 +160,15 @@ module.exports = router;
  *               password: password1
  *               role: RoleId
  *     responses:
- *       "200":
+ *       "302":
  *         description: OK
  *         content:
  *           application/json:
  *             schema:
  *                $ref: '#/components/schemas/User'
- *       "401":
+ *       "400":
  *         $ref: '#/components/responses/Unauthorized'
- *       "403":
+ *       "500":
  *         $ref: '#/components/responses/Forbidden'
  *       "404":
  *         $ref: '#/components/responses/NotFound'
@@ -189,11 +184,11 @@ module.exports = router;
  *           type: uuidv4
  *         description: User id
  *     responses:
- *       "200":
+ *       "202":
  *         description: No content
- *       "401":
+ *       "400":
  *         $ref: '#/components/responses/Unauthorized'
- *       "403":
+ *       "500":
  *         $ref: '#/components/responses/Forbidden'
  *       "404":
  *         $ref: '#/components/responses/NotFound'
