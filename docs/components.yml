@@ -18,6 +18,8 @@ components:
         password:
           type: string
           format: password
+        role:
+          type: id
       example:
         id: 123e4567-e89b-12d3-a456-426614174000
         firstname: example
@@ -25,6 +27,7 @@ components:
         email: example@example.com
         username: example
         password: Password123
+        role: RoleId
 
     Source:
       type: object
