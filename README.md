@@ -21,7 +21,7 @@ npm run start
 
 * [x] Setup
 * [ ] Error
-* [ ] Swagger
+* [x] Swagger
 * [ ] Postman
 
 #### Middlewares
@@ -76,3 +76,12 @@ npm run start
 * Dotenv
 
 * Uuid
+
+* [swagger-ui-express](https://github.com/scottie1984/swagger-ui-express)
+
+* [swagger-jsdoc](https://github.com/Surnet/swagger-jsdoc)
+
+
+## API Documentation
+
+To view the list of available APIs and their specifications, run the server and go to `http://localhost:8080/api/docs/` in your browser. This documentation page is automatically generated using the [swagger](https://swagger.io/) definitions written as comments in the route files.
