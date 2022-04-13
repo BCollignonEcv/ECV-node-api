@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
+const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
@@ -19,7 +20,7 @@ app.use(cors())
 
 
 app.get('/', (req, res) => {
-    res.send("Welcome on API")
+    res.sendFile(path.join(__dirname, '/index.html'));
 })
 
 // Routes Admin
@@ -31,7 +32,7 @@ app.use('/admin/roles', roleRoutes);
 app.use('/api/jobs', jobRoutes);
 
 // Routes Docs
-app.use('/api/docs', docsRoutes);
+app.use('/docs', docsRoutes);
 
 app.get('*', function(req, res) {
     res.status(404).json({
