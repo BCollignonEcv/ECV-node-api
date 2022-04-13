@@ -22,32 +22,32 @@ npm run start
 * [x] Setup
 * [ ] Error
 * [x] Swagger
-* [ ] Postman
+* [x] Postman
 
 #### Middlewares
 
-* [ ] Authentification
+* [x] Authentification
 
 #### Services
 
-* [ ] Scraper
+* [x] Scraper
 
 ### User
 
 * [x] Models
 * [x] Migrations
-* [ ] Seeders
+* [x] Seeders
 * [x] Routes
-* [ ] Controllers
+* [x] Controllers
 * [ ] Validator
 
 ### Source
 
 * [x] Models
 * [x] Migrations
-* [ ] Seeders
+* [x] Seeders
 * [x] Routes
-* [ ] Controllers
+* [x] Controllers
 * [ ] Validator
 
 ### Role
@@ -61,21 +61,21 @@ npm run start
 
 ## Dependencies
 
-* Express
+* [Express](https://www.npmjs.com/package/express)
 
-* Axios
+* [Axios](https://www.npmjs.com/package/axios)
 
-* Sequelize
+* [Sequelize](https://www.npmjs.com/package/sequelize)
 
-* Bcrypt
+* [Bcrypt](https://www.npmjs.com/package/bcrypt)
 
-* Body-parser
+* [Body-parser](https://www.npmjs.com/package/body-parser)
 
-* Cors
+* [Cors](https://www.npmjs.com/package/cors)
 
-* Dotenv
+* [Dotenv](https://www.npmjs.com/package/dotenv)
 
-* Uuid
+* [Uuid](https://www.npmjs.com/package/uuid)
 
 * [swagger-ui-express](https://github.com/scottie1984/swagger-ui-express)
 
