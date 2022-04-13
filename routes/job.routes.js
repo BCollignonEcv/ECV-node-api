@@ -64,13 +64,13 @@ module.exports = router;
  *     summary: Get jobs with scrapper (query params)
  *     tags: [Jobs]
  *     parameters:
- *       - in: path
+ *       - in: query
  *         name: location
  *         required: true
  *         schema:
  *           type: string
  *         description: Job location
- *       - in: path
+ *       - in: query
  *         name: search
  *         required: true
  *         schema:

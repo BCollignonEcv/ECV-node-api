@@ -26,6 +26,8 @@ module.exports = router;
  *   post:
  *     summary: Create a source
  *     tags: [Sources]
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -86,6 +88,8 @@ module.exports = router;
  *   get:
  *     summary: Get all sources
  *     tags: [Sources]
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       "302":
  *         description: OK
@@ -108,6 +112,8 @@ module.exports = router;
  *   get:
  *     summary: Get a source
  *     tags: [Sources]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -130,6 +136,8 @@ module.exports = router;
  *   patch:
  *     summary: Update a source
  *     tags: [Sources]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -186,6 +194,8 @@ module.exports = router;
  *   delete:
  *     summary: Delete a source
  *     tags: [Sources]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
