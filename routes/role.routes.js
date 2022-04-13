@@ -2,9 +2,10 @@ var express = require('express');
 var router = express.Router();
 
 const controller = require('../controllers/role.controller');
+const auth = require('../middlewares/authentification/auth.middleware');
 
-router.get('/', controller.getRoles)
-router.get('/:id', controller.getRole)
+router.get('/', auth.authenticate, controller.getRoles)
+router.get('/:id', auth.authenticate, controller.getRole)
 
 module.exports = router;
 

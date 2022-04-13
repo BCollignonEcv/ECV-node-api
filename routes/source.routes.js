@@ -2,14 +2,15 @@ var express = require('express');
 var router = express.Router();
 
 const controller = require('../controllers/source.controller');
+const auth = require('../middlewares/authentification/auth.middleware');
 
 
 
 router.get('/',  controller.getSources)
-router.get('/:id',  controller.getSource)
-router.post('/',  controller.createSource)
-router.patch('/:id',  controller.updateSource)
-router.delete('/:id',  controller.deleteSource)
+router.get('/:id', controller.getSource)
+router.post('/', auth.authenticate, controller.createSource)
+router.patch('/:id', auth.authenticate, controller.updateSource)
+router.delete('/:id', auth.authenticate, controller.deleteSource)
 
 module.exports = router;
 
