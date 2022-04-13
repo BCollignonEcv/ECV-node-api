@@ -2,12 +2,13 @@ require('dotenv').config();
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors')
+const cors = require('cors');
 
 const sourceRoutes = require('./routes/source.routes');
 const roleRoutes = require('./routes/role.routes');
 const userRoutes = require('./routes/user.routes');
 const jobRoutes = require('./routes/job.routes');
+const docsRoutes = require('./routes/docs.routes');
 
 const app = express();
 
@@ -28,6 +29,9 @@ app.use('/admin/roles', roleRoutes);
 
 // Routes Api
 app.use('/api/jobs', jobRoutes);
+
+// Routes Docs
+app.use('/api/docs', docsRoutes);
 
 app.get('*', function(req, res) {
     res.status(404).json({
