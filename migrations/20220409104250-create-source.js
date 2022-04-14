@@ -27,7 +27,7 @@ module.exports = {
           type: Sequelize.STRING,
           allowNull: false,
       },
-      jobOfferTag: {
+      jobContainer: {
           type: Sequelize.STRING
       },
       titleTag: {
@@ -41,6 +41,15 @@ module.exports = {
       },
       salaryTag: {
           type: Sequelize.STRING
+      },
+      locationTag: {
+        type: Sequelize.STRING
+      },
+      dateTag: {
+        type: Sequelize.STRING
+      },
+      descriptionTag: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

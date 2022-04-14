@@ -7,11 +7,14 @@ exports.validateSourceRegistration = [
     body('baseUrl').trim().escape().notEmpty().withMessage('baseUrl is missing'),
     body('location').trim().escape(),
     body('search').trim().escape().notEmpty().withMessage('search is missing'),
-    body('jobOfferTag').trim().escape(),
+    body('jobContainer').trim().escape(),
     body('titleTag').trim().escape(),
     body('companyTag').trim().escape(),
     body('urlTag').trim().escape(),
     body('salaryTag').trim().escape(),
+    body('locationTag').trim().escape(),
+    body('dateTag').trim().escape(),
+    body('descriptionTag').trim().escape(),
     (req, res, next) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
@@ -30,11 +33,14 @@ exports.validateSourceEdition = [
     body('baseUrl').trim().escape().optional().notEmpty().withMessage('baseUrl is missing'),
     body('location').trim().escape().optional(),
     body('search').trim().escape().optional().notEmpty().withMessage('search is missing'),
-    body('jobOfferTag').trim().escape().optional(),
+    body('jobContainer').trim().escape().optional(),
     body('titleTag').trim().escape().optional(),
     body('companyTag').trim().escape().optional(),
     body('urlTag').trim().escape().optional(),
     body('salaryTag').trim().escape().optional(),
+    body('locationTag').trim().escape().optional(),
+    body('dateTag').trim().escape().optional(),
+    body('descriptionTag').trim().escape().optional(),
     (req, res, next) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {

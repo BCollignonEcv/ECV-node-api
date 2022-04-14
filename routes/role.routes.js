@@ -3,6 +3,7 @@ var router = express.Router();
 
 const controller = require('../controllers/role.controller');
 const auth = require('../middlewares/authentification/auth.middleware');
+const validator = require('../middlewares/validators/role.validator');
 
 router.get('/', auth.authenticate, validator.validateRoleId, controller.getRoles)
 router.get('/:id', auth.authenticate, validator.validateRoleId, controller.getRole)

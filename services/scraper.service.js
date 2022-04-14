@@ -4,13 +4,11 @@ const axios = require('axios');
 
 
 module.exports = class Scraper {
-    jobs;
-    scrapedData;
-
     constructor(req, source) {
+        this.retry = false;
         this.source = source;
-        this.jobs;
-        this.scrapedData;
+        this.jobs = {};
+        this.scrapedData = {};
         this.url = generateUrl(source, req);
         this.dataMapping = generateDataMapping(source);
     }
@@ -19,8 +17,14 @@ module.exports = class Scraper {
         this.scrapedData = await executeScraper(this.url);
 
         if (this.scrapedData) {
-            this.scrapedData = cleanScrapedData(this.scrapedData);
             this.jobs = generateJobsObject(this.dataMapping, this.scrapedData);
+            if(this.jobs.status != 'OK'){
+                if(!this.retry){
+                    this.retry = true;
+                    return this.scrape();
+                }
+                return { error: 'failed to scrape data' }
+            }
             return this.jobs;
         }
     };
@@ -45,16 +49,33 @@ function generateJobsObject(dataMapping, scrapedData){
             if('export' in dataMapping[key] && !dataMapping[key].export){
                 return;
             }
-            job[key] = $(element).find(dataMapping[key].tag).text();
+            if('type' in dataMapping[key]){
+                switch (dataMapping[key].type){
+                    case 'url':
+                        let a = dataMapping[key].tag;
+                        let b = $(element).html();
+                        let c = $(element).find('a').html();
+                        job[key] = $(element).find(dataMapping[key].tag).html();
+                        break;
+                    default :
+                        job[key] = $(element).find(dataMapping[key].tag).text();
+                        break;
+                }
+            }else{
+                job[key] = $(element).find(dataMapping[key].tag).text();
+            }
         })
         jobs.push(job);
     });
     if(jobs.length > 0){
-        return jobs;
+        return {
+            status : 'OK',
+            data : jobs
+        };
     }else{
         return {
-            error : true,
-            content : $.html()
+            status : 'ERROR',
+            data : $.html()
         }
     }
 }
@@ -65,26 +86,15 @@ function generateUrl(source, req){
 }
 
 function generateDataMapping(source){
-    let a = {
-        container : {
-            tag: source.jobOfferTag,
-            export : false
-        },
-        title: {
-            tag: source.titleTag
-        },
-        company: {
-            tag: source.companyTag
-        },
-        salary: {
-            tag: source.salaryTag
-        },
-    }
-    return a;
-}
-
-function cleanScrapedData(scrapedData){
-    // scrapedData = scrapedData.replace(/(\r\n|\n|\r)/gm, "");
-    // scrapedData = scrapedData.replace(/\"/g, '"');
-    return scrapedData;
+    let dataMapping = {} 
+    Object.keys(source).filter((key) => {
+        if(key.includes('Tag')){
+            if(key === 'urlTag'){
+                return dataMapping[key.replace('Tag', '')] = { tag: source[key], type: 'url'};
+            }
+            return dataMapping[key.replace('Tag', '')] = { tag: source[key]};
+        }
+    })
+    dataMapping.container = { tag: source.jobContainer, export: false };
+    return dataMapping;
 }

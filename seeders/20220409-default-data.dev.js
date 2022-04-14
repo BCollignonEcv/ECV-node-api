@@ -59,10 +59,14 @@ module.exports = {
       baseUrl: "https://fr.indeed.com/emplois",
       location: "l",
       search: "q",
-      jobOfferTag: "div.mosaic-provider-jobcards > a",
+      jobContainer: "div.mosaic-provider-jobcards > a",
       titleTag: "h2.jobTitle span[title]",
       companyTag: "span.companyName",
       salaryTag: "div.salary-snippet span",
+      urlTag: "h2.jobTitle",
+      locationTag: "div.companyLocation",
+      dateTag: "span.date",
+      descriptionTag: "div.job-snippet",
       createdAt: new Date(),
       updatedAt: new Date()
     },
@@ -73,9 +77,10 @@ module.exports = {
       baseUrl: "https://www.linkedin.com/jobs/search/",
       location: "location",
       search: "keywords",
-      jobOfferTag: ".jobs-search-results__list > li.jobs-search-results__list-item",
+      jobContainer: ".jobs-search-results__list > li.jobs-search-results__list-item",
       titleTag: "job-card-list__title",
       companyTag: "job-card-container__company-name",
+      urlTag: "job-card-container__company-name",
       createdAt: new Date(),
       updatedAt: new Date()
   }], {});
