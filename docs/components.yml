@@ -32,6 +32,9 @@ components:
     Source:
       type: object
       properties:
+        id:
+          type: string
+          format: uuidv4
         enable:
           type: boolean
         name:
@@ -70,24 +73,6 @@ components:
           type: boolean
         deleteUser:
           type: boolean
-
-    Job:
-      type: object
-      properties:
-        location:
-          type: string
-        search:
-          type: string
-        jobOfferTag:
-          type: tag
-        titleTag:
-          type: tag
-        companyTag:
-          type: tag
-        urlTag:
-          type: tag
-        salaryTag:
-          type: tag
 
     Error:
       type: object
