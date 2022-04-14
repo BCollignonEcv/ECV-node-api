@@ -9,70 +9,6 @@
 			"name": "Admin",
 			"item": [
 				{
-					"name": "Roles",
-					"item": [
-						{
-							"name": "getRoles",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"var jsonData = JSON.parse(responseBody);\r",
-											"postman.setEnvironmentVariable(\"roleAdmin\", jsonData[1].id);"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accessTokenAdmin}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/admin/roles",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"admin",
-										"roles"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "getRole",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/admin/roles/{{roleAdmin}}",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"admin",
-										"roles",
-										"{{roleAdmin}}"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
 					"name": "Sources",
 					"item": [
 						{
@@ -254,7 +190,47 @@
 					"name": "Users",
 					"item": [
 						{
-							"name": "loginUser",
+							"name": "loginUserAsFixer",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"postman.setEnvironmentVariable(\"accessTokenAdmin\", jsonData.accessToken);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"fixer\",\r\n    \"password\": \"fixer\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/admin/users/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"users",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "loginUserAsAdmin",
 							"event": [
 								{
 									"listen": "test",
