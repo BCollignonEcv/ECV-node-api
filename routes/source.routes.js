@@ -7,9 +7,9 @@ const validator = require('../middlewares/validators/source.validator')
 
 router.get('/',  controller.getSources)
 router.get('/:id', validator.validateSourceId, controller.getSource)
-router.post('/', auth.authenticate, validator.validateSourceRegistration, controller.createSource)
-router.patch('/:id', auth.authenticate, validator.validateSourceEdition, controller.updateSource)
-router.delete('/:id', auth.authenticate, validator.validateSourceId, controller.deleteSource)
+router.post('/', auth.authenticate, auth.authorize(["admin"]), validator.validateSourceRegistration, controller.createSource)
+router.patch('/:id', auth.authenticate, auth.authorize(["admin", "fixer"]), validator.validateSourceEdition, controller.updateSource)
+router.delete('/:id', auth.authenticate, auth.authorize(["admin"]), validator.validateSourceId, controller.deleteSource)
 
 module.exports = router;
 

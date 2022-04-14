@@ -7,11 +7,11 @@ const auth = require('../middlewares/authentification/auth.middleware');
 
 router.post('/login', validator.validateUserLogin, controller.loginUser)
 
-router.get('/', auth.authenticate, controller.getUsers)
+router.get('/', auth.authenticate, auth.authorize(["admin"]), controller.getUsers)
 router.get('/:id', auth.authenticate, validator.validateUserId, controller.getUser)
-router.post('/', auth.authenticate, validator.validateUserRegistration, controller.createUser)
-router.patch('/:id', auth.authenticate, validator.validateUserEdition, controller.updateUser)
-router.delete('/:id', auth.authenticate, validator.validateUserId, controller.deleteUser)
+router.post('/', auth.authenticate, auth.authorize(["admin"]), validator.validateUserRegistration, controller.createUser)
+router.patch('/:id', auth.authenticate, auth.authorize(["admin"]), validator.validateUserEdition, controller.updateUser)
+router.delete('/:id', auth.authenticate, auth.authorize(["admin"]), validator.validateUserId, controller.deleteUser)
 
 module.exports = router;
 

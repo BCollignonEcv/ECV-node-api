@@ -6,7 +6,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const sourceRoutes = require('./routes/source.routes');
-const roleRoutes = require('./routes/role.routes');
 const userRoutes = require('./routes/user.routes');
 const jobRoutes = require('./routes/job.routes');
 const docsRoutes = require('./routes/docs.routes');
@@ -26,7 +25,6 @@ app.get('/', (req, res) => {
 // Routes Admin
 app.use('/admin/sources', sourceRoutes);
 app.use('/admin/users', userRoutes);
-app.use('/admin/roles', roleRoutes);
 
 // Routes Api
 app.use('/api/jobs', jobRoutes);

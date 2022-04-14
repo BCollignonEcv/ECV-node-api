@@ -5,10 +5,6 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
-      this.belongsTo(models.Role, {
-          foreignKey: "role",
-          allowNull: false,
-      });
   }
   }
   User.init({
@@ -17,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     username: DataTypes.STRING,
     password: DataTypes.STRING,
+    role: DataTypes.ENUM('fixer', 'admin')
   }, {
     sequelize,
     modelName: 'User',
