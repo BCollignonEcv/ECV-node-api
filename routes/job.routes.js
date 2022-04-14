@@ -2,9 +2,10 @@ var express = require('express');
 var router = express.Router();
 
 const controller = require('../controllers/job.controller');
+const validator = require('../middlewares/validators/job.validator');
 
-router.post('/', controller.executeJob)
-router.get('/', controller.executeJob)
+router.post('/', validator.validateJobBody, controller.executeJob)//location + search BODY
+router.get('/', validator.validateJobParam, controller.executeJob)//param ou query
 
 module.exports = router;
 

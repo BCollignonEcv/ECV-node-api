@@ -1,4 +1,4 @@
-const {body, validationResult} = require('express-validator');
+const {body, param, validationResult} = require('express-validator');
 
 exports.validateSourceRegistration = [
     body('enable').trim().escape().notEmpty().withMessage('enable is missing')
@@ -17,12 +17,13 @@ exports.validateSourceRegistration = [
         if (!errors.isEmpty()) {
             return res.status(400).json({errors: errors.array()});
         }
-        return res.status(200).send({data: req.body })
         next();
     },
 ];
 
 exports.validateSourceEdition = [
+    param('id').trim().escape().notEmpty().withMessage('id is missing')
+        .isUUID(4).withMessage('id is not of UUIDV4 type'),
     body('enable').trim().escape().optional().notEmpty().withMessage('enable is missing')
         .isBoolean().withMessage('should be a boolean'),
     body('name').trim().escape().optional().notEmpty().withMessage('name is missing'),
@@ -39,7 +40,17 @@ exports.validateSourceEdition = [
         if (!errors.isEmpty()) {
             return res.status(400).json({errors: errors.array()});
         }
-        return res.status(200).send({data: req.body })
+        next();
+    },
+];
+exports.validateSourceId = [
+    param('id').trim().escape().notEmpty().withMessage('id is missing')
+        .isUUID(4).withMessage('id is not of UUIDV4 type'),
+    (req, res, next) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({errors: errors.array()});
+        }
         next();
     },
 ];

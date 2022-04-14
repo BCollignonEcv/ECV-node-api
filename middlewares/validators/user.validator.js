@@ -1,4 +1,4 @@
-const {body, validationResult} = require('express-validator');
+const {body, param, validationResult} = require('express-validator');
 
 exports.validateUserRegistration = [
     body('firstname').trim().escape().notEmpty().withMessage('firstname is missing'),
@@ -13,23 +13,25 @@ exports.validateUserRegistration = [
         if (!errors.isEmpty()) {
             return res.status(400).json({errors: errors.array()});
         }
-        return res.status(200).send({data: req.body })
         next();
     },
 ];
 
 exports.validateUserEdition = [
+    param('id').trim().escape().notEmpty().withMessage('id is missing')
+        .isUUID(4).withMessage('id is not of UUIDV4 type'),
     body('firstname').trim().escape().optional().notEmpty().withMessage('firstname is missing'),
     body('lastname').trim().escape().optional().notEmpty().withMessage('lastname is missing'),
     body('email').trim().escape().optional().notEmpty().withMessage('email is missing')
         .isEmail().withMessage('should be an valid email format'),
     body('username').trim().escape().optional().notEmpty().withMessage('username is missing'),
+    param('id').trim().escape().notEmpty().withMessage('id is missing')
+        .isUUID(4).withMessage('id is not of UUIDV4 type'),
     (req, res, next) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).json({errors: errors.array()});
         }
-        return res.status(200).send({data: req.body })
         next();
     },
 ];
@@ -42,7 +44,18 @@ exports.validateUserLogin = [
         if (!errors.isEmpty()) {
             return res.status(400).json({errors: errors.array()});
         }
-        return res.status(200).send({data: req.body })
+        next();
+    },
+];
+
+exports.validateUserId = [
+    param('id').trim().escape().notEmpty().withMessage('id is missing')
+        .isUUID(4).withMessage('id is not of UUIDV4 type'),
+    (req, res, next) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({errors: errors.array()});
+        }
         next();
     },
 ];
