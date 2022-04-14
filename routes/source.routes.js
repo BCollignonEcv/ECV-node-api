@@ -4,13 +4,12 @@ var router = express.Router();
 const controller = require('../controllers/source.controller');
 const auth = require('../middlewares/authentification/auth.middleware');
 const validator = require('../middlewares/validators/source.validator')
-const {authCourse, authPage} = require('../middlewares/authentification/middleware');
 
 router.get('/',  controller.getSources)
 router.get('/:id', validator.validateSourceId, controller.getSource)
-router.post('/', auth.authenticate, authPage(["admin"]), validator.validateSourceRegistration, controller.createSource)
-router.patch('/:id', auth.authenticate, authPage(["admin", "fixer"]), validator.validateSourceEdition, controller.updateSource)
-router.delete('/:id', auth.authenticate, authPage(["admin"]), validator.validateSourceId, controller.deleteSource)
+router.post('/', auth.authenticate, auth.authorize(["admin"]), validator.validateSourceRegistration, controller.createSource)
+router.patch('/:id', auth.authenticate, auth.authorize(["admin", "fixer"]), validator.validateSourceEdition, controller.updateSource)
+router.delete('/:id', auth.authenticate, auth.authorize(["admin"]), validator.validateSourceId, controller.deleteSource)
 
 module.exports = router;
 

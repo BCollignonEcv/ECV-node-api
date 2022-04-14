@@ -1,6 +1,6 @@
-const authPage = (permissions) => {
+module.exports =(permissions) => {
     return (req,res, next) =>{
-        const userRole = req.body.role
+        const userRole = req.user.role
         if (permissions.includes(userRole)) {
             next()
         }else{
@@ -8,8 +8,3 @@ const authPage = (permissions) => {
         }
     }
 };
-const authCourse =(req,res,next) =>{
-
-};
-
-module.exports = {authPage, authCourse};

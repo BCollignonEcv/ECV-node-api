@@ -19,7 +19,7 @@ components:
           type: string
           format: password
         role:
-          type: id
+          type: string
       example:
         id: 123e4567-e89b-12d3-a456-426614174000
         firstname: example
@@ -27,7 +27,7 @@ components:
         email: example@example.com
         username: example
         password: Password123
-        role: RoleId
+        role: Role
 
     Source:
       type: object
@@ -55,24 +55,6 @@ components:
           type: string
         salaryTag:
           type: string
-
-    Role:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        disableSource:
-          type: boolean
-        createSource:
-          type: boolean
-        updateSource:
-          type: boolean
-        deleteSource:
-          type: boolean
-        deleteUser:
-          type: boolean
 
     Error:
       type: object
