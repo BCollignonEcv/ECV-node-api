@@ -18,10 +18,24 @@ module.exports = router;
 
 /**
  * @swagger
- * /admin/jobs:
- *   get:
- *     summary: Get all jobs
+ * /api/jobs:
+ *   post:
+ *     summary: Get jobs with scrapper (requestBody)
  *     tags: [Jobs]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               location:
+ *                 type: string
+ *               search:
+ *                 type: string
+ *             example:
+ *               location: Paris
+ *               search: Developpeur Web
  *     responses:
  *       "302":
  *         description: OK
@@ -33,31 +47,52 @@ module.exports = router;
  *                 results:
  *                   type: array
  *                   items:
- *                     $ref: '#/components/schemas/Job'
+ *                     type: object
+ *                     properties:
+ *                       name:
+ *                         type: string
+ *                       description:
+ *                         type: string
  *       "500":
  *         $ref: '#/components/responses/Forbidden'
  */
 
 /**
  * @swagger
- * /admin/jobs/{id}:
+ * /api/jobs:
  *   get:
- *     summary: Get a job
+ *     summary: Get jobs with scrapper (query params)
  *     tags: [Jobs]
  *     parameters:
- *       - in: path
- *         name: id
+ *       - in: query
+ *         name: location
  *         required: true
  *         schema:
- *           type: uuidv4
- *         description: Job id
+ *           type: string
+ *         description: Job location
+ *       - in: query
+ *         name: search
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Job search
  *     responses:
  *       "302":
  *         description: OK
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/Job'
+ *               type: object
+ *               properties:
+ *                 results:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       name:
+ *                         type: string
+ *                       description:
+ *                         type: string
  *       "500":
  *         $ref: '#/components/responses/Forbidden'
  */
