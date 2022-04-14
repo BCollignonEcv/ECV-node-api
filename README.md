@@ -9,10 +9,18 @@
 
 ## Setup
 
+### DEV
+
 ```bash
 git clone git@github.com:BCollignonEcv/ECV-node-api-project.git
-npm install
-npm run start
+npm run setup.dev
+```
+
+### PROD
+
+```bash
+git clone git@github.com:BCollignonEcv/ECV-node-api-project.git
+npm run setup.prod
 ```
 
 ## TODO
