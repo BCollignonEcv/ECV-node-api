@@ -4,14 +4,15 @@ var router = express.Router();
 const controller = require('../controllers/user.controller');
 const validator = require('../middlewares/validators/user.validator')
 const auth = require('../middlewares/authentification/auth.middleware');
+const {authCourse, authPage} = require('../middlewares/authentification/middleware');
 
 router.post('/login', validator.validateUserLogin, controller.loginUser)
 
 router.get('/', auth.authenticate, controller.getUsers)
 router.get('/:id', auth.authenticate, validator.validateUserId, controller.getUser)
-router.post('/', auth.authenticate, validator.validateUserRegistration, controller.createUser)
-router.patch('/:id', auth.authenticate, validator.validateUserEdition, controller.updateUser)
-router.delete('/:id', auth.authenticate, validator.validateUserId, controller.deleteUser)
+router.post('/', auth.authenticate, authPage(["admin"]), validator.validateUserRegistration, controller.createUser)
+router.patch('/:id', auth.authenticate, authPage(["admin"]), validator.validateUserEdition, controller.updateUser)
+router.delete('/:id', auth.authenticate, authPage(["admin"]), validator.validateUserId, controller.deleteUser)
 
 module.exports = router;
 

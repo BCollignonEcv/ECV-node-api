@@ -10,6 +10,7 @@ const roleRoutes = require('./routes/role.routes');
 const userRoutes = require('./routes/user.routes');
 const jobRoutes = require('./routes/job.routes');
 const docsRoutes = require('./routes/docs.routes');
+const {authCourse, authPage} =require("./middlewares/authentification/middleware");
 
 const app = express();
 
@@ -22,6 +23,14 @@ app.use(cors())
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/index.html'));
 })
+
+app.get("/course/grade", authPage(["admin", "fixer"]), (req, res) => {
+    res.json({
+        job: 'dev',
+        country: 'france',
+    });
+    console.log(User.getAttributes().role.values);
+});
 
 // Routes Admin
 app.use('/admin/sources', sourceRoutes);

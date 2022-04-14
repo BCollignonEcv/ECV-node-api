@@ -31,7 +31,8 @@ module.exports = {
           allowNull: false,
       },
       role: {
-          type: Sequelize.UUID,
+          type: Sequelize.ENUM('fixer', 'admin'),
+          defaultValue: 'fixer',
       },
       createdAt: {
         allowNull: false,
