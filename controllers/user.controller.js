@@ -22,7 +22,7 @@ module.exports = {
             if (!match) {
                 throw { message: `User or Password incorrect`, errorStatus: 401 };
             }
-            const accessToken = jwt.sign({ username: user.username }, process.env.SECRET_TOKEN);
+            const accessToken = jwt.sign({ username: user.username, role: user.role }, process.env.SECRET_TOKEN);
             res.json({ accessToken, user });
         } catch (error) {
             res.status(error.status).send(error.message || "An error occured");

@@ -4,42 +4,6 @@ const { v4: uuidv4 } = require('uuid');
 
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('Roles', [{
-        id: uuidv4(),
-        name: "Super Admin",
-        description: "Super administrator can do everything",
-        disableSource: true,
-        createSource: true,
-        updateSource: true,
-        deleteSource: true,
-        deleteUser: true,
-        createdAt: new Date(),
-        updatedAt: new Date()
-    },
-    {
-        id: uuidv4(),
-        name: "Admin",
-        description: "Administrator can create, update and disabled sources",
-        disableSource: true,
-        createSource: true,
-        updateSource: true,
-        deleteSource: false,
-        deleteUser: false,
-        createdAt: new Date(),
-        updatedAt: new Date()
-    },
-    {
-        id: uuidv4(),
-        name: "Fixer",
-        description: "Fixer can update and disabled sources",
-        disableSource: true,
-        createSource: false,
-        updateSource: true,
-        deleteSource: false,
-        deleteUser: false,
-        createdAt: new Date(),
-        updatedAt: new Date()
-    }], {});
 
     await queryInterface.bulkInsert('Users', [{
         id: uuidv4(),
@@ -48,9 +12,20 @@ module.exports = {
         email: "admin@admin.fr",
         username: "admin",
         password: await bcrypt.hash("admin", 10),
+        role: "admins",
         createdAt: new Date(),
-        updatedAt: new Date()
-    }], {});
+        updatedAt: new Date(),
+    },{
+      id: uuidv4(),
+      firstname: "fixer",
+      lastname: "fixer",
+      email: "fixer@fixer.fr",
+      username: "fixer",
+      password: await bcrypt.hash("fixer", 10),
+      role: "fixer",
+      createdAt: new Date(),
+      updatedAt: new Date(),
+  }], {});
 
     await queryInterface.bulkInsert('Sources', [{
       id: uuidv4(),
@@ -87,7 +62,6 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('Roles', null, {});
     await queryInterface.bulkDelete('Users', null, {});
     await queryInterface.bulkDelete('Sources', null, {});
   }

@@ -15,6 +15,7 @@ Live : https://ecv-node-api-project.herokuapp.com/
 
 ```bash
 git clone git@github.com:BCollignonEcv/ECV-node-api-project.git
+cd ECV-node-api-project
 npm run setup.dev
 ```
 
@@ -22,6 +23,7 @@ npm run setup.dev
 
 ```bash
 git clone git@github.com:BCollignonEcv/ECV-node-api-project.git
+cd ECV-node-api-project
 npm run setup.prod
 ```
 
