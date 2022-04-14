@@ -43,6 +43,9 @@ module.exports = router;
  *               - companyTag
  *               - urlTag
  *               - salaryTag
+ *               - locationTag
+ *               - dateTag
+ *               - descriptionTag
  *             properties:
  *               enable:
  *                 type: boolean
@@ -63,6 +66,12 @@ module.exports = router;
  *               urlTag:
  *                 type: string
  *               salaryTag:
+ *                 type: string
+ *               locationTag:
+ *                 type: string
+ *               dateTag:
+ *                 type: string
+ *               descriptionTag:
  *                 type: string
  *     responses:
  *       "201":
@@ -155,6 +164,13 @@ module.exports = router;
  *                 type: string
  *               salaryTag:
  *                 type: string
+ *               locationTag:
+ *                 type: string
+ *               dateTag:
+ *                 type: string
+ *               descriptionTag:
+ *                 type: string
+ * 
  *     responses:
  *       "302":
  *         description: OK

@@ -17,9 +17,16 @@ module.exports = {
             if(sources){
                 for (const source of sources){
                     let scraper = new Scraper(req, source);
-                    data[source.name] = {
-                        jobs: await scraper.scrape()
+                    try {
+                        await scraper.scrape();
+                    } catch (error) {
+                        throw Error('Something went wrong during scraping')
                     }
+                    if(scraper.jobs.status != 'OK'){
+                        res.send(scraper.jobs.data); 
+                        return;
+                    }
+                    data[source.name] = { jobs: scraper.jobs.data }
                 }
                 if(data){
                     res.json(data);

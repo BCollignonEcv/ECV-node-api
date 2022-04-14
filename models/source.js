@@ -19,11 +19,14 @@ module.exports = (sequelize, DataTypes) => {
     baseUrl: DataTypes.STRING,
     location: DataTypes.STRING,
     search: DataTypes.STRING,
-    jobOfferTag: DataTypes.STRING,
+    jobContainer: DataTypes.STRING,
     titleTag: DataTypes.STRING,
     companyTag: DataTypes.STRING,
     urlTag: DataTypes.STRING,
-    salaryTag: DataTypes.STRING
+    salaryTag: DataTypes.STRING,
+    locationTag: DataTypes.STRING,
+    dateTag: DataTypes.STRING,
+    descriptionTag: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'Source',
