@@ -1,6 +1,6 @@
 # ECV NODE API
 
-Live : https://ecv-node-api-project.herokuapp.com/
+Live : <https://ecv-node-api-project.herokuapp.com/>
 
 ## Groupe
 
@@ -14,30 +14,38 @@ Live : https://ecv-node-api-project.herokuapp.com/
 ### DEV
 
 ```bash
+#bash
 git clone git@github.com:BCollignonEcv/ECV-node-api-project.git
+cd ECV-node-api-project
 npm run setup.dev
 ```
 
 ### PROD
 
 ```bash
+#bash
 git clone git@github.com:BCollignonEcv/ECV-node-api-project.git
+cd ECV-node-api-project
 npm run setup.prod
 ```
+
+## API Documentation
+
+To view the list of available APIs and their specifications, run the server and go to `http://localhost:8080/docs/` in your browser. This documentation page is automatically generated using the [swagger](https://swagger.io/) definitions written as comments in the route files.
 
 ## TODO
 
 ### Global
 
 * [x] Setup
-* [ ] Error
-* [x] Swagger
 * [x] Postman
+* [x] Swagger
 * [x] Deploy
 
 #### Middlewares
 
 * [x] Authentification
+* [x] Authorization
 
 #### Services
 
@@ -61,16 +69,7 @@ npm run setup.prod
 * [x] Controllers
 * [x] Validator
 
-### Role
-
-* [x] Models
-* [x] Migrations
-* [x] Seeders
-* [x] Routes
-* [ ] Controllers
-* [x] Validator
-
-## Dependencies
+## PROD Dependencies
 
 * [Express](https://www.npmjs.com/package/express)
 
@@ -88,10 +87,18 @@ npm run setup.prod
 
 * [Uuid](https://www.npmjs.com/package/uuid)
 
-* [swagger-ui-express](https://github.com/scottie1984/swagger-ui-express)
+* [cheerio](https://www.npmjs.com/package/cheerio)
 
-* [swagger-jsdoc](https://github.com/Surnet/swagger-jsdoc)
+* [path](https://www.npmjs.com/package/path)
 
-## API Documentation
+* [pg](https://www.npmjs.com/package/pg)
 
-To view the list of available APIs and their specifications, run the server and go to `http://localhost:8080/docs/` in your browser. This documentation page is automatically generated using the [swagger](https://swagger.io/) definitions written as comments in the route files.
+* [pg-hstore](https://www.npmjs.com/package/pg-hstore)
+
+* [swagger-ui-express](https://www.npmjs.com/package/swagger-ui-express)
+
+* [swagger-jsdoc](https://www.npmjs.com/package/swagger-jsdoc)
+
+## DEV Dependencies
+
+* [sqlite3](https://www.npmjs.com/package/sqlite3)
