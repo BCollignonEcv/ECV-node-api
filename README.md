@@ -50,7 +50,7 @@ npm run setup.prod
 * [x] Seeders
 * [x] Routes
 * [x] Controllers
-* [ ] Validator
+* [x] Validator
 
 ### Source
 
@@ -59,16 +59,16 @@ npm run setup.prod
 * [x] Seeders
 * [x] Routes
 * [x] Controllers
-* [ ] Validator
+* [x] Validator
 
 ### Role
 
 * [x] Models
 * [x] Migrations
-* [ ] Seeders
+* [x] Seeders
 * [x] Routes
 * [ ] Controllers
-* [ ] Validator
+* [x] Validator
 
 ## Dependencies
 
