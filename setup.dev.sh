@@ -14,6 +14,7 @@ echo ---------------------
 echo ---- db:undo:all ----
 echo ---------------------
 echo
+
 if [[ -f "data/dev-db.sqlite3" ]]
 then
     npx sequelize-cli db:migrate:undo:all

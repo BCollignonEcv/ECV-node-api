@@ -1,5 +1,7 @@
 # ECV NODE API
 
+Live : https://ecv-node-api-project.herokuapp.com/
+
 ## Groupe
 
 1. Baptiste COLLIGNON : baptiste.collignon@mail-ecv.fr
@@ -31,6 +33,7 @@ npm run setup.prod
 * [ ] Error
 * [x] Swagger
 * [x] Postman
+* [x] Deploy
 
 #### Middlewares
 
@@ -88,7 +91,6 @@ npm run setup.prod
 * [swagger-ui-express](https://github.com/scottie1984/swagger-ui-express)
 
 * [swagger-jsdoc](https://github.com/Surnet/swagger-jsdoc)
-
 
 ## API Documentation
 
